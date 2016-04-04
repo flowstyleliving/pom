@@ -1,0 +1,43 @@
+body {
+  background-color: orange;
+}
+
+.container {
+  background-color: lightgrey;
+  border: 1pt solid black;
+  width: 500px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.row {
+  width: 500px;
+  height: 100px;
+}
+
+#color {
+  width: 25px;
+  height: 25px;
+}
+
+.transformable {
+    -webkit-transition: height 100ms linear;
+    -moz-transition: height 100ms linear;
+    -o-transition: height 100ms linear;
+    -ms-transition: height 100ms linear;
+    transition: height 100ms linear;
+
+}
+
+.small {
+    height:300px;
+}
+
+.big {
+    height:100px;
+}
+
+.checkNotes {
+  height: auto;
+  width: 20px;
+}

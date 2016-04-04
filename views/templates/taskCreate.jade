@@ -1,0 +1,27 @@
+div.container
+  div(style="text-align: center;")
+    h1 Create New POM Task
+  br
+  form.container.well(ng-submit="vm.create()")
+    div
+      label Title: 
+       br
+       input.form-control(type="text", name="title", ng-model="vm.task.title")
+    hr
+    div
+       label CheckNotes: 
+       input.form-control(type="text", name="CheckNotes", ng-model="vm.task.CheckNotes.title")
+    hr
+    div
+       label Due Date:
+       br
+       input.form-control(type="date", name="dueDate", ng-model="vm.task.dueDate")
+    hr
+    div
+      label Color:
+      br
+      colorpicker(ng-model="vm.task.color")
+      input.form-control(type="text", name="color", ng-model="vm.task.color", ng-init="color = '#f05a28'")
+    br
+    div(style="text-align: center")
+      button.btn.btn-primary(type="submit") Submit

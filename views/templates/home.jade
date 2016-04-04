@@ -1,0 +1,58 @@
+
+span(style="margin-left: 540px; width: 120%;" class="form-inline")
+ input.form-control(type="text" ng-model="search")
+br
+br
+
+div.container(ng-repeat="t in vm.tasks")
+  div.row
+    div.col.col-md-3(ng-class="{'small':isSmall, 'big':!isSmall}")
+      p#color(style="background-color: {{t.color}};")
+      h6 Task: 
+        h6
+          {{t.title}}
+    div.col.col-md-6
+      label Due:
+        p {{t.dueDate | date:'longDate'}}       
+        p.confirm
+          input.checkNotes(ng-repeat="c in t.checkNotes", type="checkbox") 
+          {{c.title}}
+      button.btn.btn-warning.transformable(ng-click="isSmall = !isSmall; showDetails = ! showDetails;") Edit
+      br
+      button.btn.btn-danger(ng-click="vm.remove(t)") Delete
+    div.col.col-md-2(ng-show="showDetails")  
+      div.container.well(ng-submit="t.update(_id)")
+        div
+          label Title: 
+          br
+          input.form-control(type="text", ng-model="t.title")
+        hr
+        div
+          label Date Due:
+          br
+          input.form-control(type="date", ng-model="t.dueDate")
+        hr
+        div
+          label checkNotes:
+          br
+          input.form-control(type="string", ng-model="t.checkNotes")
+        hr
+        div(style="text-align: center")
+          button.btn.btn-primary(type="submit") Submit
+
+    
+//- div.container-fluid
+//-   div.row(ng-repeat="t in vm.tasks")
+//-   	div.col-md-4
+//-       label Task: 
+//-       h3
+//-         {{t.title}}
+//-       br
+//-       label Created: 
+//-         p {{t.postDate | date:'longDate'}}
+//-   	div.col-md-4
+//-       p.confirm
+//-       input(type="checkbox", name="checkNotes")
+//-         {{t.checkNotes.check}}
+//-   	div.col-md-4
+//-       button.btn.btn-danger(ng-click="vm.remove(t)") Delete    
