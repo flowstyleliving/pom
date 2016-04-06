@@ -31,6 +31,7 @@ export function controller(Task: mongoose.Model<ITaskModel>) {
 
   function create(req: express.Request, res: express.Response, next: Function) {
     req.body.postDate = Date.now();
+    req.body.dueDate = Date.parse(req.body.dueDate);
     let t = new Task(req.body);
     t.save((err, task: ITaskModel) => {
       if(err) return next(err);
@@ -39,12 +40,11 @@ export function controller(Task: mongoose.Model<ITaskModel>) {
   }
 
   function update(req: express.Request, res: express.Response, next: Function) {
-    Task.update({_id: req.params.id}, req.body, (err, numRows) => {
-      Task.remove({_id:req.params.id}, (err) => {
+    Task.update({_id: req.params.id}, req.body, (err, numRows: any) => {
         if(err) return next(err);
+        // if(numRows.nModified === 0) return next ({message: "Could not update the requested task.", status: 500});
         res.json({message: "Your Task has been updated!"});
       })
-    })
   }
 
   function remove(req: express.Request, res: express.Response, next: Function) {

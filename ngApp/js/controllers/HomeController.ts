@@ -1,6 +1,13 @@
 namespace app.Controllers {
   export class HomeController {
+    // public task: app.i.ITask;
     public tasks: Array<app.i.ITask>;
+
+    // public create() {
+    //   this.TaskService.createTask(this.task).then((res) => {
+    //     this.$state.go('Home');
+    //   })
+    // }
 
     public remove(t) {
       this.TaskService.remove(t._id).then((res) => {
@@ -9,8 +16,7 @@ namespace app.Controllers {
     }
 
     public update(t) {
-      this.TaskService.update(t._id).then((res) => {
-        this.$state.go('Home', { id: t._id });
+      this.TaskService.update(t).then((res) => {
       });
     }
 

@@ -1,44 +1,44 @@
-
-span(style="margin-left: 540px; width: 120%;" class="form-inline")
- input.form-control(type="text" ng-model="search")
+h1(class="form-inline")
+  span
+    button(type="button" ng-click"pomEvent()") POM
+  br
+  span
+    input.form-control(type="text",placeholder="I want to..." ng-model="search" ng-submit="vm.create().title")
 br
 br
-
-div.container(ng-repeat="t in vm.tasks")
-  div.row
-    div.col.col-md-3(ng-class="{'small':isSmall, 'big':!isSmall}")
-      p#color(style="background-color: {{t.color}};")
-      h6 Task: 
-        h6
-          {{t.title}}
-    div.col.col-md-6
-      label Due:
-        p {{t.dueDate | date:'longDate'}}       
-        p.confirm
-          input.checkNotes(ng-repeat="c in t.checkNotes", type="checkbox") 
-          {{c.title}}
-      button.btn.btn-warning.transformable(ng-click="isSmall = !isSmall; showDetails = ! showDetails;") Edit
-      br
-      button.btn.btn-danger(ng-click="vm.remove(t)") Delete
-    div.col.col-md-2(ng-show="showDetails")  
-      div.container.well(ng-submit="t.update(_id)")
-        div
-          label Title: 
-          br
-          input.form-control(type="text", ng-model="t.title")
-        hr
-        div
-          label Date Due:
-          br
-          input.form-control(type="date", ng-model="t.dueDate")
-        hr
-        div
-          label checkNotes:
-          br
-          input.form-control(type="string", ng-model="t.checkNotes")
-        hr
-        div(style="text-align: center")
-          button.btn.btn-primary(type="submit") Submit
+div#main(ng-repeat="t in vm.tasks | filter: search")
+    div.container.well(ng-model="isSmall")
+      div.col.col-md-3
+        p#color(style="background-color: {{t.color}};")
+        h6 Task: 
+          h6 {{t.title}}
+      div.col.col-md-6
+        label Due:
+          p {{t.dueDate | date:'longDate'}}      
+          p.confirm
+            input.checkNotes(ng-repeat="c in t.checkNotes", type="checkbox") 
+            {{c.title}}
+      div.col.col-m-2
+        button.btn.btn-warning.transformable(ng-click="isSmall = !isSmall; showDetails = ! showDetails;") Edit
+        br
+        button.btn.btn-danger(ng-click="vm.remove(t)") Delete
+    div(ng-show="showDetails") 
+      form#showDetails(ng-submit="vm.update(t)") 
+        div.container.well.hello
+          div.well.span3
+            label Title: 
+            br
+            input.form-control(type="text", ng-model="t.title")
+          div.well.span3
+            label Date Due:
+            br
+            input.form-control(type="datetime", ng-model="t.dueDate")
+          div.well.span3
+            label checkNotes:
+            br
+            input.form-control(type="string", ng-model="t.checkNotes")
+          div(style="text-align: center")
+            button.btn.btn-primary(type="submit") +Submit÷
 
     
 //- div.container-fluid

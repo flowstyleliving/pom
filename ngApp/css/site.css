@@ -1,16 +1,21 @@
 body {
-  background-color: orange;
+  background-color: #ffa316;
 }
 
-.container {
+h1 {
+  text-align: center;
+}
+/*.container {
   background-color: lightgrey;
   border: 1pt solid black;
   width: 500px;
   height: 100px;
   margin-bottom: 10px;
-}
+}*/
 
 .row {
+  border: 1pt solid black;
+
   width: 500px;
   height: 100px;
 }
@@ -30,14 +35,24 @@ body {
 }
 
 .small {
+  border: 1pt solid black;
+
     height:300px;
 }
 
 .big {
+  border: 1pt solid black;
+
     height:100px;
 }
 
 .checkNotes {
   height: auto;
   width: 20px;
+}
+
+#showDetails {
+  margin-top: -22px;
+  /*display: block;*/
+  /*border: 1pt solid red;*/
 }

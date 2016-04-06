@@ -19,6 +19,32 @@
 
 
   </div>
+    <!-- Single button with keyboard nav -->
+  <div class="col col-sm-1" style="float: right; margin-right: 15px;">
+    <!-- Dropdown if not logged in -->
+    <div class="btn-group" uib-dropdown keyboard-nav ng-show="!nav.status._id">
+      <button id="simple-btn-keyboard-nav" type="button" style="height: 30px; line-height: 5px;" class="btn btn-success" uib-dropdown-toggle>
+        Login <span class="caret"></span>
+      </button>
+      <ul uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav">
+        <li role="menuitem"><a ui-sref="userLogin">Login</a></li>
+        <li role="menuitem"><a ui-sref="userRegister">Register</a></li>
+        <li role="menuitem"><a href="#" disabled>Reset Password</a></li>
+      </ul>
+    </div>
+    <!-- Dropdown if logged in -->
+    <div class="btn-group" uib-dropdown keyboard-nav ng-show="nav.status._id">
+      <button id="simple-btn-keyboard-nav" type="button" style="height: 30px; line-height: 5px;" class="btn btn-success" uib-dropdown-toggle>
+        Account <span class="caret"></span>
+      </button>
+      <ul uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav">
+        <li role="menuitem"><a>Profile</a></li>
+        <li role="menuitem"><a>Notifications</a></li>
+        <li role="menuitem"><a ng-click="nav.logout()" style="cursor:pointer;">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  <br>
 
   <ui-view></ui-view>
 
@@ -32,9 +58,9 @@
 
   <script src="/js/app.js"></script>
   <script src="/js/services/TaskService.js"></script>
+  <script src="/js/services/UserService.js"></script>
   <script src="/js/controllers/HomeController.js"></script>
   <script src="/js/controllers/TaskCreateController.js"></script>
-  <script src="/js/controllers/TaskUpdateController.js"></script>
   <script src="/js/controllers/UserLoginController.js"></script>
   <script src="/js/controllers/UserRegisterController.js"></script>
 

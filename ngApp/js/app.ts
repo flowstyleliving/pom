@@ -16,13 +16,17 @@ namespace app {
       templateUrl: '/templates/taskCreate.jade',
       controller: 'TaskCreateController',
       controllerAs: 'vm'
-    }).state('taskUpdate', {
-      url: '/update/:id',
-      templateUrl: '/templates/taskUpdate.jade',
-      controller: 'TaskUpdateController',
+    }).state('userLogin', {
+      url: '/login',
+      templateUrl: '/templates/userLogin.jade',
+      controller: 'UserLoginController',
       controllerAs: 'vm'
-    })
-    ;
+    }).state('userRegister', {
+      url: '/register',
+      templateUrl: '/templates/userRegister.jade',
+      controller: 'UserRegisterController',
+      controllerAs: 'vm'
+    });
 
     $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode(true);

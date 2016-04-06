@@ -2,12 +2,12 @@ namespace app.i {
   export interface ITask {
     _id: any;
     title: string;
-    postDate: string;
-    dueDate: string;
+    postDate: number;
+    dueDate: number;
     checkNotes: {
       id: string,
       title: string,
-      dueDate: string,
+      dueDate: number,
       check: number
     },
     pomStatus: string;
