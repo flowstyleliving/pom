@@ -10,6 +10,7 @@ namespace app.i {
     location?: string;
     imageUrl?: string;
 
+    checknotes: Array<string | IChecknote>;
     tasks: Array<string | ITask>;
   }
 }

@@ -36,8 +36,3 @@ export function controller(User: mongoose.Model<IUserModel>) {
     })
   }
 }
-
-
-
-// i feel {ashamed, jittery, anxious, afraid, dismayed, restless} because my need for {ease} isn't being met.
-// i feel {pain} because my need for {growth} isn't being met.

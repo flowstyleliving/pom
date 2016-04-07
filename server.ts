@@ -7,8 +7,17 @@ import bodyParser = require('body-parser');
 import mongoose = require('mongoose');
 const app = express();
 
+require('./models/Checknote')
 require('./models/User');
 require('./models/Task');
+
+// let mongoString: string;
+// if (process.env.NODE_ENV === 'test')
+//   mongoString = "mongodb://localhost/pom";
+// else
+//   /* istanbul ignore next */
+//   mongoString = process.env.MONGO_STRING || "mongodb://localhost/pom";
+
 mongoose.connect('mongodb://localhost/pom', (err) => {
   if(err) console.error(err);
   else console.log('Connected to mongodb://localhost/pom')
@@ -31,8 +40,9 @@ app.use('/templates', require('./routes/viewRoutes'));
 app.use(express.static('./ngApp'));
 app.use('/scripts', express.static('bower_components'));
 
-app.use('/api/v1/tasks', require('./routes/taskRoutes'));
 app.use('/api/v1/users', require('./routes/userRoutes'));
+app.use('/api/v1/tasks', require('./routes/taskRoutes'));
+app.use('/api/v1/checknotes', require('./routes/checknoteRoutes'));
 
 app.get('/*', function(req, res, next) {
   if (/.js|.html|.css|templates|js|scripts/.test(req.path) || req.xhr) {

@@ -20,8 +20,8 @@ let userSchema = new mongoose.Schema({
   location: { type: String },
   imageUrl: { type: String },
 
-  tasks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Task' }]
-
+  tasks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Task' }],
+  checknotes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Checknote'}]
 
 })
 

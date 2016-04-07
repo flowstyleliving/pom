@@ -1,5 +1,6 @@
 import * as express from 'express';
 import {ITaskModel} from '../models/Task';
+import {IChecknoteModel} from '../models/Checknote';
 import * as mongoose from 'mongoose';
 
 export function controller(Task: mongoose.Model<ITaskModel>) {
@@ -13,7 +14,7 @@ export function controller(Task: mongoose.Model<ITaskModel>) {
 
   function getAll(req: express.Request, res: express.Response, next: Function) {
     Task.find({})
-    .populate('name')
+    .populate('title')
     .exec((err, tasks) => {
       if(err) return next(err);
       res.json(tasks);
@@ -22,7 +23,7 @@ export function controller(Task: mongoose.Model<ITaskModel>) {
 
   function getOne(req: express.Request, res: express.Response, next: Function) {
     Task.findOne({_id: req.params.id})
-    .populate('name')
+    .populate('title')
     .exec((err, tasks) => {
       if(err) return next(err);
       res.json(tasks);
@@ -31,8 +32,9 @@ export function controller(Task: mongoose.Model<ITaskModel>) {
 
   function create(req: express.Request, res: express.Response, next: Function) {
     req.body.postDate = Date.now();
-    req.body.dueDate = Date.parse(req.body.dueDate);
     let t = new Task(req.body);
+    console.log(req.body);
+    t.user = req['payload']._id;
     t.save((err, task: ITaskModel) => {
       if(err) return next(err);
       res.json(task);

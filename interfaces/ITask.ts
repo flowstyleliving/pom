@@ -4,13 +4,11 @@ namespace app.i {
     title: string;
     postDate: number;
     dueDate: number;
-    checkNotes: {
-      id: string,
-      title: string,
-      dueDate: number,
-      check: number
-    },
     pomStatus: string;
     color: string;
+    completeOrnah: boolean,
+    
+    checknotes: [string | IChecknote];
+    user: (string | IUser);
   }
 }

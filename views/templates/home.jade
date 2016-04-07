@@ -14,14 +14,16 @@ div#main(ng-repeat="t in vm.tasks | filter: search")
           h6 {{t.title}}
       div.col.col-md-6
         label Due:
-          p {{t.dueDate | date:'longDate'}}      
-          p.confirm
-            input.checkNotes(ng-repeat="c in t.checkNotes", type="checkbox") 
-            {{c.title}}
+          p {{t.dueDate | date:'longDate'}}   
+          div(ng-repeat="c in t.checkNotes.completeOrnah")  
+            p.confirm
+              input(type="checkbox")
       div.col.col-m-2
         button.btn.btn-warning.transformable(ng-click="isSmall = !isSmall; showDetails = ! showDetails;") Edit
         br
         button.btn.btn-danger(ng-click="vm.remove(t)") Delete
+        br
+        button.btn.btn-primary(ui-sref="checknotes") checknotes
     div(ng-show="showDetails") 
       form#showDetails(ng-submit="vm.update(t)") 
         div.container.well.hello
@@ -34,11 +36,21 @@ div#main(ng-repeat="t in vm.tasks | filter: search")
             br
             input.form-control(type="datetime", ng-model="t.dueDate")
           div.well.span3
-            label checkNotes:
+            h5 checkNotes:
             br
-            input.form-control(type="string", ng-model="t.checkNotes")
+            label Done or Nah:
+            input.form-control(type="checkbox", ng-model="t.checkNotes.completeOrnah")
+            label Title:
+            br
+            input.form-control(type="string", ng-model="t.checkNotes.title")
+            label dueDate:
+            br
+            input.form-control(type="date", ng-model="t.checkNotes.dueDate")
+            label Notes:
+            br
+            textarea.form-control(ng-model="t.checkNotes.note")
           div(style="text-align: center")
-            button.btn.btn-primary(type="submit") +Submit÷
+            button.btn.btn-primary(type="submit") +Submit+
 
     
 //- div.container-fluid

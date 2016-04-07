@@ -4,7 +4,9 @@ namespace app {
     .config((
     $stateProvider: ng.ui.IStateProvider,
     $locationProvider: ng.ILocationProvider,
-    $urlRouterProvider: ng.ui.IUrlRouterProvider) => {
+    $urlRouterProvider: ng.ui.IUrlRouterProvider,
+    $httpProvider: ng.IHttpProvider
+    ) => {
 
     $stateProvider.state('Home', {
       url: '/',
@@ -15,6 +17,11 @@ namespace app {
       url: '/create',
       templateUrl: '/templates/taskCreate.jade',
       controller: 'TaskCreateController',
+      controllerAs: 'vm'
+    }).state('checknotes', {
+      url: '/checknotes',
+      templateUrl: '/templates/checknotes.jade',
+      controller: 'TaskNoteController',
       controllerAs: 'vm'
     }).state('userLogin', {
       url: '/login',
@@ -30,5 +37,6 @@ namespace app {
 
     $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode(true);
+    $httpProvider.interceptors.push('AuthInterceptor');
   });
 }
