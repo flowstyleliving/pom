@@ -1,4 +1,4 @@
-namespace app.i {
+ namespace app.i {
   export interface IChecknote {
     _id: any;
     title: string;

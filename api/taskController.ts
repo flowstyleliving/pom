@@ -14,7 +14,7 @@ export function controller(Task: mongoose.Model<ITaskModel>) {
 
   function getAll(req: express.Request, res: express.Response, next: Function) {
     Task.find({})
-    .populate('title')
+    // .populate('title')
     .exec((err, tasks) => {
       if(err) return next(err);
       res.json(tasks);

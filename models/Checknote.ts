@@ -8,7 +8,7 @@ let checknoteSchema = new mongoose.Schema({
   note: {type: String},
   completeOrnah: {type: Boolean, default: false},
 
-  user: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
+  user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   task: {type: mongoose.Schema.Types.ObjectId, ref: "Task", required: true}
 });
 

@@ -3,11 +3,11 @@ namespace app.i {
     _id: any;
     title: string;
     postDate: number;
-    dueDate: number;
+    dueDate: Date;
     pomStatus: string;
     color: string;
     completeOrnah: boolean,
-    
+
     checknotes: [string | IChecknote];
     user: (string | IUser);
   }

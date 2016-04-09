@@ -10,6 +10,7 @@ namespace app.Controllers {
 
     constructor(
       private TaskService: app.Services.TaskService,
+      private ChecknoteService: app.Services.ChecknoteService,
       private $state: ng.ui.IStateService
     ) {}
 

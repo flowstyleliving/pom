@@ -21,7 +21,7 @@ namespace app.Services {
       }
 
       public update(task: app.i.ITask) {
-        return this.TaskResource.update({id: task._id}, {title: task.title, dueDate: task.dueDate, checkNotes: task.checkNotes, pomStatus: task.pomStatus, color: task.color}).$promise;
+        return this.TaskResource.update({id: task._id}, {title: task.title, dueDate: task.dueDate, pomStatus: task.pomStatus, color: task.color}).$promise;
       }
 
       public remove(cat: string) {

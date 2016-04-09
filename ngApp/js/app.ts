@@ -19,7 +19,7 @@ namespace app {
       controller: 'TaskCreateController',
       controllerAs: 'vm'
     }).state('checknotes', {
-      url: '/checknotes',
+      url: '/checknotes/:id',
       templateUrl: '/templates/checknotes.jade',
       controller: 'TaskNoteController',
       controllerAs: 'vm'

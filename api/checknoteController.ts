@@ -13,20 +13,22 @@ export function controller(Checknote: mongoose.Model<IChecknoteModel>, Task: mon
 
   function getAll(req: express.Request, res: express.Response, next: Function) {
     Checknote.find({})
-      .populate('completeOrnah')
+      // .populate('completeOrnah')
       .exec((err, checknotes) => {
         if(err) return next(err);
         res.json(checknotes);
       })
   }
-  
+
   function create(req: express.Request, res: express.Response, next: Function) {
     let c = new Checknote(req.body);
     c.dueDate = Date.now();
-    c.user = req['payload']._id;
-    c.save((err, comment) => {
+    console.log(req.body)
+    // c.user = req['payload']._id;
+    c.save((err, checknote) => {
       if (err) return next(err);
-      Task.update({ _id: c.task }, { $push: { 'checknotes': c._id } }, (err, result) => {
+      console.log('hi')
+      Task.update({ _id: c.task }, { $push: { 'checknotes': c } }, (err, result) => {
         if (err) return next(err);
         res.json(c);
       });

@@ -15,8 +15,11 @@ const auth = jwt({
 
 // Base Route: /api/v1/checknotes
 
+// GET: /api/v1/checknotes
+router.get('/', ctrl.getAll);
+
 // POST: /api/v1/checknotes
-router.post('/', auth, ctrl.create);
+router.post('/', ctrl.create);
 
 // DELETE: /api/v1/checknotes
 router.delete('/:id', auth, ctrl.remove);

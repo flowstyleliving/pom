@@ -7,9 +7,10 @@ import bodyParser = require('body-parser');
 import mongoose = require('mongoose');
 const app = express();
 
+
+require('./models/Task');
 require('./models/Checknote')
 require('./models/User');
-require('./models/Task');
 
 // let mongoString: string;
 // if (process.env.NODE_ENV === 'test')

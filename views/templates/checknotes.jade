@@ -1,5 +1,23 @@
 h1 checknotes
 br
-div
-  p.confirm(ng-repeat="c in vm.checknotes")
-    input(type="checkbox")
+form.container.well(ng-submit="vm.create()")
+  div
+    div
+      label title:
+      br
+      textarea(type ="text", ng-model="vm.checknote.title")
+    div
+      label dueDate:
+      br
+      input(type="date" ng-model="vm.checknote.dueDate")
+    div
+      label Note:
+      br
+      textarea(type="text", ng-model="vm.checknote.note")
+    button.btn.btn-primary(type="submit") +Submit+
+
+
+
+//- add checknote
+
+//- remove checknote

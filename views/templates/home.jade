@@ -23,7 +23,7 @@ div#main(ng-repeat="t in vm.tasks | filter: search")
         br
         button.btn.btn-danger(ng-click="vm.remove(t)") Delete
         br
-        button.btn.btn-primary(ui-sref="checknotes") checknotes
+        button.btn.btn-primary(ui-sref="checknotes({ id: t._id })") checknotes
     div(ng-show="showDetails") 
       form#showDetails(ng-submit="vm.update(t)") 
         div.container.well.hello
@@ -34,7 +34,11 @@ div#main(ng-repeat="t in vm.tasks | filter: search")
           div.well.span3
             label Date Due:
             br
-            input.form-control(type="datetime", ng-model="t.dueDate")
+            input.form-control(type="date", ng-model="t.dueDate")
+          div.well.span3
+            label Color: 
+            br
+            input.form-control(type="text", ng-model="t.color")
           div.well.span3
             h5 checkNotes:
             br
@@ -42,7 +46,7 @@ div#main(ng-repeat="t in vm.tasks | filter: search")
             input.form-control(type="checkbox", ng-model="t.checkNotes.completeOrnah")
             label Title:
             br
-            input.form-control(type="string", ng-model="t.checkNotes.title")
+            input.form-control(type="text", ng-model="t.checkNotes.title")
             label dueDate:
             br
             input.form-control(type="date", ng-model="t.checkNotes.dueDate")
@@ -50,7 +54,7 @@ div#main(ng-repeat="t in vm.tasks | filter: search")
             br
             textarea.form-control(ng-model="t.checkNotes.note")
           div(style="text-align: center")
-            button.btn.btn-primary(type="submit") +Submit+
+            button.btn.btn-primary(type="submit" ng-click="isSmall = !isSmall; showDetails = ! showDetails;") +Submit+
 
     
 //- div.container-fluid
