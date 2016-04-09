@@ -1,7 +1,9 @@
 h1 checknotes
 br
-form.container.well(ng-submit="vm.create()")
-  div
+
+form.container.well(ng-submit="vm.create()", style="text-align: center;")
+  div 
+  h2 Create:
     div
       label title:
       br
@@ -15,9 +17,22 @@ form.container.well(ng-submit="vm.create()")
       br
       textarea(type="text", ng-model="vm.checknote.note")
     button.btn.btn-primary(type="submit") +Submit+
+br
 
-
-
-//- add checknote
-
+//- update checknote
+div(ng-repeat="c in vm.checknotes")
+  form.container.well(ng-submit="vm.update(c)")
+    div
+    h2 checknotes 
+    div
+      input(type="checkbox" ng-model="c.completeOrnah")
+    div
+      input(ng-model="c.title")
+    div
+      input(type="date", ng-model="c.dueDate")
+    div
+      textarea(ng-model="c.note")
+    button.btn.btn-success(type="submit(c)") +Submit+
+    button.btn.btn-danger(ng-click="vm.remove(c)") Delete
+    
 //- remove checknote

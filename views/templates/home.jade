@@ -15,9 +15,8 @@ div#main(ng-repeat="t in vm.tasks | filter: search")
       div.col.col-md-6
         label Due:
           p {{t.dueDate | date:'longDate'}}   
-          div(ng-repeat="c in t.checkNotes.completeOrnah")  
-            p.confirm
-              input(type="checkbox")
+          div.confirm(ng-repeat="c in t.checknotes", style="display: inline-block;")
+            input(type="checkbox" ng-model="c")
       div.col.col-m-2
         button.btn.btn-warning.transformable(ng-click="isSmall = !isSmall; showDetails = ! showDetails;") Edit
         br

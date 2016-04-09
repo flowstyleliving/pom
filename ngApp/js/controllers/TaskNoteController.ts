@@ -22,7 +22,6 @@ namespace app.Controllers {
 
     public update(c) {
       this.ChecknoteService.update(c).then((res) => {
-        this.$state.go('Home');
       });
     }
 

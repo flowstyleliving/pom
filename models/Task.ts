@@ -8,7 +8,7 @@ let taskSchema = new mongoose.Schema({
   dueDate: {type: Date},
   pomStatus: {type: String},
   color: {type: String, default: "lightblue"},
-  completeOrnah: {type: String, default: false},
+  completeOrnah: {type: Boolean, default: false},
 
   user: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
   checknotes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Checknote'}]

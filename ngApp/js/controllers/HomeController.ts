@@ -2,6 +2,7 @@ namespace app.Controllers {
   export class HomeController {
     // public task: app.i.ITask;
     public tasks: Array<app.i.ITask>;
+    public checknotes: Array<app.i.IChecknote>;
 
     // public create() {
     //   this.TaskService.createTask(this.task).then((res) => {
@@ -22,10 +23,12 @@ namespace app.Controllers {
 
     constructor(
       private TaskService: app.Services.TaskService,
+      private ChecknoteService: app.Services.ChecknoteService,
       private $state: ng.ui.IStateService,
       private $stateParams: ng.ui.IStateParamsService
     ) {
         this.tasks = TaskService.getAll();
+        this.checknotes = ChecknoteService.getAll();
     }
   }
 
